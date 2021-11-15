@@ -1,3 +1,12 @@
+# vscode
+.vscode
+
+# eslint
+.eslintrc.json
+
+#text
+todo.md
+
 # Logs
 logs
 *.log
