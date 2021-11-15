@@ -1,0 +1,5 @@
+[
+  {"id":1,"text":"Inni egy kávét","completed":true},
+  {"id":2,"text":"Megírni a feladatot","completed":false},
+  {"id":3,"text":"Lefeküdni aludni","completed":false}
+]
