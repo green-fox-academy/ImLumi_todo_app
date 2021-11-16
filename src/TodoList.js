@@ -8,21 +8,39 @@ export default class TodoList {
     this.#todoItems.push(new TodoItem(todo, completed));
   }
 
+  completedTodo(index) {
+    this.#todoItems[index].comleted();
+  }
+
+  removeTodo(index) {
+    this.#todoItems.splice(index, 1);
+  }
+
   addTodo(todo) {
-    this.#addTodo(this.#todoItems.length + 1, todo);
+    this.#addTodo(todo);
   }
 
-  loadTofile() {
-    TodoFS.readTodo().forEach((todo) => {
-      this.#addTodo(todo.text, todo.completed);
-    });
+  loadTofile(path) {
+    if (TodoFS.readTodoFile(path).length > 0) {
+      TodoFS.readTodoFile(path).forEach((todo) => {
+        this.#addTodo(todo.text, todo.completed);
+      });
+    }
   }
 
-  saveToFile() {
-    TodoFS.writeTodo(this.#todoItems);
+  saveToFile(path) {
+    TodoFS.writeTodoFile(path, this.#todoItems);
+  }
+
+  TodoItemsLength() {
+    return this.#todoItems.length;
   }
 
   print() {
-    this.#todoItems.forEach((todo, index) => console.log(`${index + 1} - ${todo.toString()}`));
+    if (this.#todoItems.length > 0) {
+      this.#todoItems.forEach((todo, index) => console.log(`${index + 1} - ${todo.toString()}`));
+    } else {
+      console.log('Nincs mára tennivalód! :)');
+    }
   }
 }

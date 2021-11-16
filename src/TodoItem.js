@@ -1,6 +1,7 @@
 export default class TodoItem {
   #text;
   #comleted;
+
   constructor(toDo, comleted = false) {
     this.#text = toDo;
     this.#comleted = comleted;
